@@ -8,6 +8,15 @@ public class Book {
     private String title;
     private LocalDate publicationYear;
 
+    public Book() {
+    }
+
+    public Book(Long id, String title, LocalDate publicationYear) {
+        this.id = id;
+        this.title = title;
+        this.publicationYear = publicationYear;
+    }
+
     public Long getId() {
         return id;
     }
