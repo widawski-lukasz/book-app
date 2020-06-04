@@ -1,6 +1,7 @@
-package pl.lwidawski.booksapp;
+package pl.lwidawski.booksapp.api;
 
 import org.springframework.web.bind.annotation.*;
+import pl.lwidawski.booksapp.dao.enitity.Book;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

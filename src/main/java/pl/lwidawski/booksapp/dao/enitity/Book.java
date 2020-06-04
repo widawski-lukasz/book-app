@@ -1,4 +1,4 @@
-package pl.lwidawski.booksapp;
+package pl.lwidawski.booksapp.dao.enitity;
 
 import java.time.LocalDate;
 
