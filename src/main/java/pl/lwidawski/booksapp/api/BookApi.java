@@ -1,7 +1,9 @@
 package pl.lwidawski.booksapp.api;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.lwidawski.booksapp.dao.enitity.Book;
+import pl.lwidawski.booksapp.manager.BookManager;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -12,6 +14,14 @@ import java.util.Optional;
 @RequestMapping("api/books")
 public class BookApi {
 
+    private BookManager books;
+
+    @Autowired
+    public BookApi(BookManager books) {
+        this.books = books;
+    }
+
+    /* --Replaced by dataBase
     private List<Book> books;
 
     public BookApi(){
@@ -19,32 +29,35 @@ public class BookApi {
         books.add(new Book(1L, "Book1", LocalDate.of(1995,2,3)));
         books.add(new Book(2L, "Book2", LocalDate.of(1991,1,2)));
 
-    }
+    }*/
 
     @GetMapping("/all")
-    public List<Book> getAll(){
-        return books;
+    public Iterable<Book> getAll(){
+        return books.findAll();
     }
 
     @GetMapping
-    public Book getById(@RequestParam int index){
-        Optional<Book> first = books.stream().filter(element -> element.getId() == index).findFirst();
-        return first.get();
+    public Optional<Book> getById(@RequestParam Long index){
+        /*--Lambda replaced by using BookManager
+        Optional<Book> first = books.stream().filter(element -> element.getId() == index).findFirst();*/
+        return books.findById(index);
     }
 
     @PostMapping
-    public boolean addBook(@RequestBody Book book) {
-        return books.add(book);
+    public Book addBook(@RequestBody Book book) {
+        return books.save(book);
     }
 
     @PutMapping
-    public boolean updateBook(@RequestBody Book book) {
-        return books.add(book);
+    public Book updateBook(@RequestBody Book book) {
+
+        return books.save(book);
     }
 
     @DeleteMapping
-    public boolean deleteBook(@RequestParam int index){
-        return books.removeIf(element -> element.getId() == index);
+    public void deleteBook(@RequestParam Long index){
+        /*return books.removeIf(element -> element.getId() == index);*/
+        books.deleteById(index);
     }
 
 }

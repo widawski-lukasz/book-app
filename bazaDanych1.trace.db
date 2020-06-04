@@ -1,0 +1,8 @@
+2020-06-04 20:06:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabela "BOOK" nie istnieje
+Table "BOOK" not found; SQL statement:
+INSERT INTO "BOOK" ("ID", "PUBLICATION_YEAR", "TITLE") VALUES (?, ?, ?) [42102-200]
+2020-06-04 20:17:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabela "BOOK" nie istnieje
+Table "BOOK" not found; SQL statement:
+INSERT INTO "BOOK" ("ID", "PUBLICATION_YEAR", "TITLE") VALUES (?, ?, ?) [42102-200]
